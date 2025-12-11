@@ -1,0 +1,162 @@
+<!-- test2.html
+	 Purpose: Development / scratch test page
+	 Edited: 2025-12-11
+--> 
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Development test page">
+	<title>Test</title>
+	<link rel="stylesheet" href="shared.css">
+	<style type="text/css"> /*internal css or inline css*/
+
+/* we will put all elements a box sizing. it is for the width of all element, if ever you put a body it will not add to actuall width of element  */ 
+		*{
+			box-sizing: border-box;
+			font-family: arial;
+		}
+
+/*	to access the class (.) and the class name*/
+		
+/*to access the element , use the element name when it comes to CSS*/
+		header{
+			width: 100%;
+			height:100px ;
+			float: right;
+			background-color: #5d5d5f;
+		}
+
+		header h1{
+			text-align: center;
+			color: white;
+			font-family: arial;
+			font-size: 40px;
+		}
+		.row
+			{
+			max-width: 1200px;
+			height: 10px;
+			float: left;
+			margin: auto;
+		}
+		
+
+		aside{
+			width: 30%;
+			height: 300px;
+			float: left;
+			background-color: green;
+			padding: 30px;
+			
+		}
+
+		aside a{
+			font-size: 20px;
+			display: block;
+			color: blue;
+			padding: 5px 20px;
+		}
+		aside a:hover{
+
+			border: 1px solid white;
+		}
+
+		.content-area{
+			width: 70%;
+			height: 300px;
+			float: left;
+			background-color: red;
+			padding:10px 20px;
+		}
+
+		aside button{
+
+			box-shadow: 0 0 5px cyan,0 0 25px cyan;
+			padding: 10px 30px;
+		}
+		button:hover{
+			box-shadow: 0 0 5px cyan,0 0 25px cyan, 0 0 50px cyan, 0 0 100px cyan, 0 0 200px cyan;
+		}
+		
+		.pic{
+			margin: 200 auto;
+			width: 2000px;
+			list-style: none;
+		}
+		.pic li{
+			float: left;
+			width: 100px;
+			margin-right: 100px;
+			margin-top: 30px;
+			border: 3px solid #999;
+		}
+		.pic li img{
+			width: 250px;
+			height: 100px;
+			float: left;
+		}
+
+		footer{
+			width: 100%;
+			height: 50px;
+			float: left;
+			background-color: orange;
+			padding: 5px; 
+		}
+		footer p{
+			text-align: center;
+			color: black;
+			font-size: 18px;
+		}
+	</style>
+</head>
+
+
+
+
+
+
+
+<body>
+	<div class="container">
+		<header>
+			<div class="row">
+			<div class="logo">
+			<img src="pexels-photo-814499.jpeg" height="100">
+			<h1>header</h1>
+	
+			
+		</header>
+		</div>
+	<!-- for sidebar -->
+		<aside>
+			<nav>
+				<a href="">Naruto</a>
+				<a href="">Naruto</a>
+				<a href="">Naruto</a>
+				<a href="ABOUT US.html">About us</a>
+
+				<br>
+				<br>
+				<button>Glowing button</button>
+			</nav>
+		</aside>
+		<section class="content-area">
+			<h2>Anime</h2>
+
+			<ul class="pic">
+	   			<li class="active"><a href="nature1.html"><img src="Kalanggaman-Island-1-600x338.jpg" alt="Kalanggaman" height="200" width="200"></a></li>
+     			<li class="active"><a href="nature2.html"><img src="canigao.jpg" alt="canigao" height="200" width="200"></a></li>
+				<li class="active"><a href="nature3.html"><img src="caluwayan.jpg" alt="caluwayan" height="200" width="200"></a></li>
+				
+			</ul>
+		</section>
+		<footer>
+			<p>Footer</p>
+		</footer>
+	</div>
+
+</body>
+</html>

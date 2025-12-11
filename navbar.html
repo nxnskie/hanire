@@ -1,0 +1,39 @@
+<!-- navbar.html
+  Purpose: Navbar component (injected by `navbar.js`)
+  Edited: 2025-12-11
+-->
+<!-- Navbar component inserted into each page by `navbar.js` -->
+<nav>
+  <div class="hamburger-menu" id="hamburger-menu" aria-label="Open menu" role="button" tabindex="0">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
+  <div class="nav-links" id="nav-menu">
+    <a href="index.html">HOME</a>
+    <a href="aboutUs_fwp.html">ABOUT US</a>
+
+    <div class="dropdown">
+      <a href="#">SHOP ▼</a>
+      <div class="dropdown-content">
+        <a href="casualPage_fwp.html">CASUAL</a>
+        <a href="superCPage_fwp.html">SUPERCAR</a>
+      </div>
+    </div>
+
+    <a href="salesPage_fwp.html">SALES</a>
+    <a href="contactPage_fwp.html">CONTACT US</a>
+  </div>
+  
+  <div class="user-dropdown" id="user-dropdown">
+    <button id="user-btn" class="user-button">
+      <span id="username-display">Login</span> ▼
+    </button>
+    <div class="user-dropdown-content" id="user-menu">
+      <a href="profilePage_fwp.html" class="user-dropdown-item">PROFILE</a>
+      <a href="settingsPage_fwp.html" class="user-dropdown-item">SETTINGS</a>
+      <a href="#" id="logout-btn" class="user-dropdown-item logout-item">LOGOUT</a>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,121 @@
+<!-- index.html
+   Purpose: Main site entry page
+   Edited: 2025-12-11
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hanire main page - index">
+  <link rel="icon" type="image/jpg" href="https://i.pinimg.com/736x/d1/d8/4d/d1d84d0ca2048b739ff48fe76f103376.jpg">
+    <title>Hanire - Home</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="shared.css">
+    <link rel="stylesheet" href="responsive.css">
+    <!-- Small page-specific override to ensure consistent about-section alignment -->
+    <style>
+      .about-section { display: grid; grid-template-columns: 420px 1fr; grid-template-areas: "image text"; align-items: center; gap: 40px; }
+      .about-section.reverse { grid-template-areas: "text image"; }
+      /* Force a consistent image box so Mission and Vision match visually */
+      .about-section .car { grid-area: image; width: 100%; max-width: 420px; height: 260px; object-fit: cover; border-radius: 15px; margin: 0; }
+      .about-text { grid-area: text; }
+      @media (max-width: 900px) {
+        .about-section { grid-template-columns: 360px 1fr; }
+        .about-section .car { max-width: 360px; height: 230px; }
+      }
+
+      /* Ensure alternating image placement on desktop/laptop widths */
+      @media (min-width: 701px) {
+        /* Count only the .about-section divs using :nth-of-type to avoid header/p intro nodes */
+        .about .about-section:nth-of-type(2),
+        .about .about-section:nth-of-type(even) {
+          grid-template-areas: "text image";
+        }
+        .about .about-section:nth-of-type(1),
+        .about .about-section:nth-of-type(odd) {
+          grid-template-areas: "image text";
+        }
+        /* Push the image box to the right edge for reversed sections so it doesn't sit centered */
+        .about .about-section.reverse .car {
+          justify-self: end;
+          margin-left: 20px; /* small offset to ensure it's visually further right */
+        }
+      }
+      @media (max-width: 700px) {
+        .about-section { display: flex !important; flex-direction: column !important; }
+        .about-section .car { max-width: 300px; height: auto; object-fit: contain; }
+      }
+    </style>
+</head>
+<body>
+
+    <div class="background">
+
+    </div>
+
+    <!-- Navigation will be injected by navbar.js -->
+    <nav></nav>
+
+ <article class="about">
+  <h1>WELCOME TO HANIRE</h1>
+  <p>
+    We offer a wide range of Cars depending on your needs and wants! <br>
+    Ranging from BMW, Lamborghini, McLaren, Ferrari, and many more! <br>
+    Visit our shop to view the available vehicles.
+  </p>
+
+  <!-- Mission -->
+  <div class="about-section">
+    <img src="https://i.pinimg.com/736x/e3/e7/3f/e3e73fa04add1008a57e7603a10160bf.jpg" 
+         alt="Picture of White BMW M4" class="car">
+    <div class="about-text">
+      <h3>Our Mission</h3>
+      <p>
+        At Hanire, our mission is to provide our customers with the highest quality vehicles and 
+        exceptional customer service. <br>
+        We believe that buying a car should be an enjoyable and stress-free experience. <br>
+        We strive to make that a reality for every customer who walks through our doors.
+      </p>
+    </div>
+  </div>
+
+  <!-- Vision -->
+  <div class="about-section reverse">
+            <img src="https://i.pinimg.com/1200x/4e/1b/d9/4e1bd952e5ed6049a9a3045914302750.jpg" 
+              alt="Picture of White McLaren Senna" class="car">
+    <div class="about-text">
+      <h3>Our Vision</h3>
+      <p>
+        Our vision is to be the leading car dealership in the industry, known for innovation, 
+        integrity, and excellence in customer care.
+      </p>
+    </div>
+  </div>
+
+  <!-- Core Values -->
+  <div class="about-section">
+    <img src="https://i.pinimg.com/1200x/05/91/40/059140bc06e08bb1a32e6539433a328e.jpg" 
+         alt="Picture of Red Ferrari 488 Pista" class="car">
+    <div class="about-text">
+      <h3>Our Core Values</h3>
+      <p>
+<strong>H</strong> – Hospitality <br>
+<strong>A</strong> – Assurance<br>
+<strong>N</strong> – Novelty<br>
+<strong>I</strong> – Integrity<br>
+<strong>R</strong> – Reliability<br>
+<strong>E</strong> – Excellence<br>
+
+      </p>
+    </div>
+  </div>
+</article>
+
+<footer>
+  <p>&copy; 2025 Hanire. All rights reserved.</p>
+</footer>
+
+<script src="navbar.js"></script>
+</body>
+</html>

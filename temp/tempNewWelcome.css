@@ -1,0 +1,151 @@
+/* ==================================================
+  tempNewWelcome.css — Temporary welcome / promo styles
+
+  Purpose: Short-lived styles for welcome or promotional preview pages.
+  Keep changes minimal and migrate lasting styles into the main page CSS.
+
+  Sections:
+  - Navigation for promo pages
+  - Large hero typography and CTAs
+  - Promotional grid/gallery
+  - Quick responsive adjustments
+  ================================================== */
+
+nav {
+  display: flex;
+  justify-content: flex-end; 
+  gap: 100px;   
+  align-items: center;              
+  padding: 40px 100px;   
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+nav a {
+  color: rgb(255, 47, 47);
+  font-size: 80px ;         
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+ transition: color 0.3s;
+
+/* ------------------
+  Large promo typography
+  ------------------
+  Purpose: temporary large headings used for promo/preview pages. These
+  large sizes are intentionally temporary — consider scaling down for
+  responsive and accessibility guidelines before promoting to production.
+*/
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #ffc9c9;
+  text-decoration: underline;
+}
+
+body {
+    background-color: black;
+    background-size: 2000px 2000px;
+    margin: 0;
+    
+}
+body h1{
+    font-size: 200px;
+    color: white;
+    text-align: left;
+    margin-left: 1500px;
+    margin-top: 900px;
+    font-family: 'Poppins', sans-serif;
+   
+}
+body h2{
+    font-size: 100px;
+    color: white;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    margin-top: -50px;
+    margin-bottom: 50px;
+}
+
+
+.car-gallery {
+  display: flex;
+  flex-wrap: wrap;        /* wrap onto the next line if not enough space */
+  justify-content: center; /* center the items */
+  gap: 40px;               /* space between items */
+  padding: 20px;
+}
+
+.car-item {
+  position: relative;       /* for .car-info overlay */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1000px;
+}
+
+.car-item img {
+  width: 900px;
+  height: 900px;
+  border: 3px solid #ff0000;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.car-item img:hover {
+  opacity: 0.6;
+}
+
+/* car-name is always visible BELOW */
+.car-name {
+  margin-top: 20px;
+  text-align: center;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 100px;
+  z-index: 1; /* makes sure it's above background */
+}
+
+/* car-info is overlay, hidden until hover */
+.car-info {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0,0,0,0.6);
+  padding: 20px 40px;
+  border-radius: 10px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 75px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.car-item:hover .car-info {
+  opacity: 1;
+}
+
+
+/* Show info on hover */
+.car-item:hover .car-info {
+  opacity: 1;
+}
+
+
+footer {
+  text-align: center;
+  padding: 30px;
+  margin-top: 2000px;
+  margin-right: 300px;
+  background-color: #101010;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 70px;
+  width: 100%;
+}
+
+
+

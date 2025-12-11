@@ -1,0 +1,85 @@
+<!-- editProfile.html
+     Purpose: Edit profile page (update user details)
+     Edited: 2025-12-11
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Edit your Hanire profile: update name, avatar, and contact info">
+  <title>Hanire - Edit Profile</title>
+  <link rel="stylesheet" href="editProfile.css">
+  <link rel="stylesheet" href="shared.css">
+  <link rel="stylesheet" href="responsive.css">
+  <link rel="icon" type="image/jpg" href="https://i.pinimg.com/736x/d1/d8/4d/d1d84d0ca2048b739ff48fe76f103376.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="edit-profile-container">
+    <div class="edit-profile-card">
+      <div class="edit-profile-header">
+        <h1>Edit Profile</h1>
+        <p class="lead">Update your profile information and picture</p>
+      </div>
+
+      <form id="edit-profile-form" class="edit-profile-form" novalidate>
+        <div class="row">
+          <label>Profile Picture</label>
+          <div class="avatar-upload-section">
+            <div id="avatar-preview" class="avatar-preview">Click to change</div>
+            <input id="avatarInput" name="avatarInput" type="file" accept="image/*" style="display: none;">
+            <input id="avatarUrl" name="avatarUrl" type="hidden">
+            <div class="avatar-button-group">
+              <button type="button" class="btn-upload" onclick="document.getElementById('avatarInput').click()">Choose Image</button>
+              <button type="button" class="btn-remove" id="remove-avatar-btn">Remove Picture</button>
+            </div>
+            <small>Or paste image URL below</small>
+            <input id="avatarUrlInput" name="avatarUrlInput" type="url" placeholder="https://...">
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="fullName">Full name</label>
+          <input id="fullName" name="fullName" type="text" required>
+        </div>
+
+        <div class="row two-col">
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+          </div>
+          <div>
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel">
+          </div>
+        </div>
+
+        <div class="row two-col">
+          <div>
+            <label for="location">Location</label>
+            <input id="location" name="location" type="text">
+          </div>
+          <div>
+            <label for="role">Role</label>
+            <div class="select-wrapper">
+              <select id="role" name="role" class="role-select">
+                <option>Standard Member</option>
+                <option>Premium Member</option>
+                <option>Dealer</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row actions">
+          <button type="submit" class="btn primary">Save Changes</button>
+          <a class="btn link" href="profilePage_fwp.html">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="editProfile.js"></script>
+</body>
+</html>
