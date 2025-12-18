@@ -1,0 +1,259 @@
+<!-- settingsPage_fwp.html
+         Purpose: Settings page for user preferences
+         Edited: 2025-12-17
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpg" href="https://i.pinimg.com/736x/d1/d8/4d/d1d84d0ca2048b739ff48fe76f103376.jpg">
+    <title>Hanire - Settings</title>
+    <link rel="stylesheet" href="../../public/assets/settingsPage_fwp.css">
+    <link rel="stylesheet" href="../../public/assets/shared.css">
+    <link rel="stylesheet" href="../../public/assets/responsive.css">
+</head>
+
+<body>
+    <div class="background"></div>
+
+    <!-- Navigation will be injected by navbar.js -->
+    <nav></nav>
+
+    <article class="settings-container">
+        <h1>ACCOUNT SETTINGS</h1>
+
+        <div class="settings-wrapper">
+            <!-- Settings Menu -->
+            <aside class="settings-menu">
+                <button class="menu-item active" data-section="general">General Settings</button>
+                <button class="menu-item" data-section="security">Security</button>
+                <button class="menu-item" data-section="privacy">Privacy</button>
+                <button class="menu-item" data-section="notifications">Notifications</button>
+                <button class="menu-item" data-section="preferences">Preferences</button>
+            </aside>
+
+            <!-- Settings Content -->
+            <div class="settings-content">
+                <!-- General Settings -->
+                <div id="general" class="settings-section active">
+                    <h2>General Settings</h2>
+
+                    <!-- User Profile Section -->
+                    <div class="profile-section">
+                        <h3>Personal Information</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>Email</label>
+                                <p id="profile-email">-</p>
+                            </div>
+                            <div class="info-item">
+                                <label>Phone</label>
+                                <p id="profile-phone">-</p>
+                            </div>
+                            <div class="info-item">
+                                <label>Location</label>
+                                <p id="profile-location">-</p>
+                            </div>
+                            <div class="info-item">
+                                <label>Member Since</label>
+                                <p id="profile-member-since">-</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" id="fullname" placeholder="Enter full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="language">Preferred Language</label>
+                            <select id="language">
+                                <option selected>English</option>
+                                <option>Spanish</option>
+                                <option>French</option>
+                                <option>German</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="save-btn">Save Changes</button>
+                    </form>
+                </div>
+
+                <!-- Security Settings -->
+                <div id="security" class="settings-section">
+                    <h2>Security Settings</h2>
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label for="current-password">Current Password</label>
+                            <input type="password" id="current-password" placeholder="Enter current password">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">New Password</label>
+                            <input type="password" id="new-password" placeholder="Enter new password">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password" placeholder="Confirm new password">
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Enable Two-Factor Authentication
+                            </label>
+                        </div>
+                        <button type="submit" class="save-btn">Update Security</button>
+                    </form>
+                </div>
+
+                <!-- Privacy Settings -->
+                <div id="privacy" class="settings-section">
+                    <h2>Privacy Settings</h2>
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Show profile publicly
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Allow others to contact me
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox"> Share purchase history
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Allow marketing emails
+                            </label>
+                        </div>
+                        <button type="submit" class="save-btn">Update Privacy</button>
+                    </form>
+                </div>
+
+                <!-- Notifications Settings -->
+                <div id="notifications" class="settings-section">
+                    <h2>Notification Preferences</h2>
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Email notifications
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Order updates
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Promotional offers
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Service reminders
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="frequency">Email Frequency</label>
+                            <select id="frequency">
+                                <option>Weekly</option>
+                                <option selected>Monthly</option>
+                                <option>Quarterly</option>
+                                <option>Never</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="save-btn">Update Notifications</button>
+                    </form>
+                </div>
+
+                <!-- Preferences -->
+                <div id="preferences" class="settings-section">
+                    <h2>User Preferences</h2>
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label for="theme">Theme</label>
+                            <select id="theme">
+                                <option selected>Dark (Default)</option>
+                                <option>Light</option>
+                                <option>Auto</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="currency">Currency</label>
+                            <select id="currency">
+                                <option selected>USD ($)</option>
+                                <option>EUR (€)</option>
+                                <option>GBP (£)</option>
+                                <option>JPY (¥)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Use advanced features
+                            </label>
+                        </div>
+                        <button type="submit" class="save-btn">Save Preferences</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="danger-zone">
+            <h3>Danger Zone</h3>
+            <button class="delete-account-btn">Delete Account</button>
+        </div>
+    </article>
+
+    <footer>
+      <p>&copy; 2025 Hanire. All rights reserved.</p>
+    </footer>
+
+    <script src="../../public/assets/js/navbar.js" defer></script>
+
+    <script>
+        // Settings menu toggle
+        const menuItems = document.querySelectorAll('.menu-item');
+        const sections = document.querySelectorAll('.settings-section');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active class from all
+                menuItems.forEach(m => m.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+
+                // Add active class to clicked
+                item.classList.add('active');
+                const sectionId = item.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+
+        // Populate profile section & form inputs from localStorage
+        const profileData = JSON.parse(localStorage.getItem('profileData') || '{}');
+
+        // Profile section
+        document.getElementById('profile-email').textContent = profileData.email || '-';
+        document.getElementById('profile-phone').textContent = profileData.phone || '-';
+        document.getElementById('profile-location').textContent = profileData.location || '-';
+        document.getElementById('profile-member-since').textContent = profileData.memberSince || '-';
+
+        // General Settings form
+        document.getElementById('fullname').value = profileData.fullName || '';
+        document.getElementById('email').value = profileData.email || '';
+        document.getElementById('phone').value = profileData.phone || '';
+    </script>
+</body>
+</html>

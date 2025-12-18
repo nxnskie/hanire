@@ -1,0 +1,416 @@
+/* ==================================================
+  responsive.css — Global responsive helpers
+
+  Purpose: centralize breakpoint rules and small utility helpers
+  This file is loaded after page-specific CSS to provide consistent
+  responsive behavior and helpers (images, containers, common components).
+
+  Sections:
+  - CSS variables and base helpers
+  - Image/carousel helpers
+  - Layout centering for profile/register/edit pages
+  - Breakpoint adjustments (mobile/tablet)
+  Keep changes minimal here; page-specific overrides belong in each page CSS.
+  ================================================== */
+
+:root{
+  --max-content-width: 1200px;
+  --container-gap: 20px;
+}
+
+/* ------------------
+   CSS Variables & Base Helpers
+   ------------------
+   Purpose: define container sizing tokens and small helpers used across pages.
+   - `--max-content-width` controls the max width for centered content containers.
+   - `--container-gap` is the default horizontal padding.
+*/
+
+/* Base layout adjustments */
+html,body{height:100%;}
+
+/* Make images responsive and centered */
+img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+.carousel, .carousel-slides, .carousel-slide { 
+  width: 100% !important; 
+  margin: 0 auto !important; 
+}
+
+/* Center all profile/avatar elements */
+.profile-header, .avatar-upload-section {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+/* Constrain main content and center it */
+.container, .profile-container, .register-container, .edit-profile-container{
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-gap);
+  padding-right: var(--container-gap);
+  box-sizing: border-box;
+}
+
+/* Typography scaling for small devices */
+@media (max-width: 900px) {
+  html { font-size: 15px; }
+}
+@media (max-width: 520px) {
+  html { font-size: 14px; }
+}
+
+/* NAVIGATION - ensure desktop positioning is reset on mobile */
+@media (min-width: 701px) {
+  /* Desktop: nav links centered, user dropdown on the right */
+  nav { position: relative !important; }
+  nav .nav-links { margin: 0 auto !important; flex: 0 1 auto !important; justify-content: center !important; }
+  nav .user-dropdown { position: absolute !important; right: 20px !important; top: 50% !important; transform: translateY(-50%) !important; margin-left: 0 !important; padding-left: 30px !important; border-left: 2px solid rgba(255, 47, 47, 0.5) !important; }
+}
+
+/* NAVIGATION - center links and ensure mobile stacking */
+nav { padding-left: 12px; padding-right: 12px; }
+nav .nav-links { gap: 18px; }
+
+@media (max-width: 900px) {
+  /* Make nav more compact */
+  nav { padding: 12px; }
+  nav a { font-size: 18px; }
+}
+
+@media (max-width: 700px) {
+  /* Hamburger menu handled in shared.css */
+  body { padding: 0 !important; margin: 0 !important; }
+}
+
+/* Forms & Inputs: full-width & touch-friendly controls */
+input[type="text"], input[type="email"], input[type="password"], input[type="tel"], select, textarea {
+  font-size: 1rem;
+  padding: 12px 14px;
+}
+
+@media (max-width: 520px) {
+  .edit-profile-card, .register-card, .profile-card { padding: 14px; }
+  .btn, .btn.primary, .btn.link { padding: 12px; font-size: 15px; }
+}
+
+/* Profile/header/avatar scaling */
+.profile-header .profile-avatar, .profile-header img.profile-avatar {
+  width: 150px; height:150px;
+}
+@media (max-width:700px){
+  .profile-header .profile-avatar { width: 120px; height: 120px; }
+}
+@media (max-width:420px){
+  .profile-header .profile-avatar { width: 100px; height: 100px; }
+  .profile-header h2 { font-size: 20px; }
+}
+
+/* Cards & Layouts: stack grids into columns on small devices */
+.info-grid, .stats-grid, .purchase-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+@media (max-width:700px){
+  .info-grid, .stats-grid, .purchase-list { grid-template-columns: 1fr; }
+}
+
+/* Carousel adjustments */
+.carousel { width: 100%; max-height: 420px; overflow: hidden; }
+.carousel-slides { min-height: 240px; }
+@media (max-width:700px){ .carousel-slides { min-height: 180px; } }
+
+/* Make interactive hit areas larger on touch devices */
+@media (pointer: coarse) {
+  .dropdown a, .user-dropdown .user-button, .btn { padding: 14px 18px; }
+  nav a { padding: 8px 12px; }
+}
+
+/* Utility: hide large shadows and heavy effects on low-width devices for performance */
+@media (max-width:520px){
+  .edit-profile-card, .register-card, .profile-card { box-shadow: none; border-radius: 10px; }
+}
+
+/* Responsive helpers you can use in templates */
+.hide-mobile { display: inline-block; }
+.show-mobile { display: none; }
+@media (max-width:700px){ .hide-mobile{ display:none !important; } .show-mobile{ display:inline-block !important; } }
+
+/* --- Additional Mobile Optimizations --- */
+
+/* Tablet (900px to 700px) */
+@media (max-width: 900px) {
+  body { font-size: 15px !important; }
+  
+  /* Forms: ensure full-width inputs on tablets */
+  .form-group, .form-row { width: 100% !important; }
+  input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="file"], select, textarea {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Buttons more touch-friendly */
+  .btn { padding: 14px 16px !important; min-height: 48px !important; }
+  
+  /* Dropdown options easier to tap */
+  select { min-height: 48px !important; font-size: 16px !important; }
+  
+  /* Profile cards narrower max-width */
+  .profile-card, .register-card, .edit-profile-card { max-width: 600px !important; margin: 0 auto !important; }
+  
+  /* Carousels taller for better visibility */
+  .carousel-slides { min-height: 300px !important; }
+}
+
+/* Small Tablet / Large Phone (700px to 520px) */
+@media (max-width: 700px) {
+  html { font-size: 14px !important; }
+  body { font-size: 14px !important; padding: 0 !important; margin: 0 !important; }
+  
+  /* Reduce padding for narrower screens */
+  .container, .profile-container, .register-container, .edit-profile-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Nav handled by hamburger menu in shared.css */
+  nav a { 
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+  }
+  
+  /* Form controls stack nicely */
+  .form-row { display: block !important; }
+  .form-row > * { width: 100% !important; margin-bottom: 10px !important; }
+  
+  /* Avatar smaller on phones */
+  .profile-header .profile-avatar { width: 100px !important; height: 100px !important; font-size: 32px !important; }
+  .avatar { width: 80px !important; height: 80px !important; font-size: 28px !important; }
+  
+  /* Stats grid to single column */
+  .stats-grid { grid-template-columns: 1fr !important; }
+  .stat-box { padding: 12px !important; }
+  
+  /* Carousel shorter on phones */
+  .carousel-slides { min-height: 200px !important; }
+/* Phone (520px to 420px) */
+@media (max-width: 520px) {
+  html { font-size: 13px !important; }
+  body { font-size: 13px !important; line-height: 1.5 !important; }
+  
+  /* Very compact padding */
+  .container, .profile-container, .register-container, .edit-profile-container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  
+  /* Navbar link text even smaller */
+  nav a { font-size: 14px !important; padding: 6px 10px !important; }
+  
+  /* Headings scale down */
+  h1 { font-size: 24px !important; }
+  h2 { font-size: 20px !important; }
+  h3 { font-size: 18px !important; }
+  
+  /* Profile avatar tiny */
+  .profile-header .profile-avatar { width: 80px !important; height: 80px !important; font-size: 28px !important; }
+  
+  /* Tabs/buttons more compact */
+  .btn, .btn.primary, .btn.link { padding: 12px 10px !important; font-size: 13px !important; }
+  
+  /* Forms even tighter */
+  input, select, textarea { padding: 10px 12px !important; font-size: 16px !important; /* Prevent auto-zoom on iOS */ }
+  
+  /* Cards minimal padding */
+  .profile-card, .register-card, .edit-profile-card { padding: 12px !important; border-radius: 8px !important; }
+} 
+  /* Profile avatar tiny */
+  .profile-header .profile-avatar { width: 80px; height: 80px; font-size: 28px; }
+  
+  /* Tabs/buttons more compact */
+  .btn, .btn.primary, .btn.link { padding: 12px 10px; font-size: 13px; }
+  
+  /* Forms even tighter */
+  input, select, textarea { padding: 10px 12px; font-size: 16px; /* Prevent auto-zoom on iOS */ }
+  
+  /* Cards minimal padding */
+  .profile-card, .register-card, .edit-profile-card { padding: 12px; border-radius: 8px; }
+}
+
+/* Micro Phone (under 420px) */
+@media (max-width: 420px) {
+  html { font-size: 12px !important; }
+  body { font-size: 12px !important; }
+  
+  /* Extreme padding reduction */
+  .container, .profile-container, .register-container, .edit-profile-container {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  
+  /* Headings very small */
+  h1 { font-size: 20px !important; line-height: 1.3 !important; }
+  h2 { font-size: 18px !important; }
+  
+  /* Avatar smallest */
+  .profile-header .profile-avatar { width: 70px !important; height: 70px !important; font-size: 24px !important; }
+  
+  /* Button text very compact */
+  .btn { padding: 10px 8px !important; font-size: 12px !important; }
+  
+  /* Remove borders where they don't add value */
+  .profile-card, .register-card, .edit-profile-card { border: none !important; background: rgba(10,10,10,0.95) !important; }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+  nav { padding: 8px 12px; }
+  nav a { font-size: 14px; padding: 4px 8px; }
+  .carousel-slides { min-height: 250px; }
+  .profile-header .profile-avatar { width: 80px; height: 80px; }
+}
+
+/* Touch device enhancements */
+@media (hover: none) and (pointer: coarse) {
+  /* Make all interactive elements bigger for touch */
+  a, button, .btn { min-height: 48px; min-width: 48px; padding: 12px 16px; }
+  input[type="checkbox"], input[type="radio"] { width: 24px; height: 24px; cursor: pointer; }
+  
+  /* Remove :hover effects that don't work on touch */
+  a:hover { text-decoration: none; }
+  
+  /* Increase tap targets */
+  .dropdown a { padding: 14px 16px; }
+  nav a { padding: 10px 14px; }
+}
+
+/* High-DPI screens (retina, etc.) */
+@media (min-resolution: 2dppx) {
+  img { image-rendering: crisp-edges; }
+}
+
+/* ========================================
+   RESPONSIVE PERFORMANCE & UX
+   ======================================== */
+
+/* Faster transitions on mobile to prevent janky animations */
+@media (max-width: 768px) {
+  * {
+    transition-duration: 0.15s !important;
+  }
+  
+  /* Larger touch targets on mobile */
+  button, a, input[type="button"], input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve spacing on mobile */
+  .container, main {
+    padding: 15px;
+  }
+  
+  /* Better card spacing */
+  .card, .profile-card, .register-card {
+    padding: 20px !important;
+    margin: 15px auto !important;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    font-size: 15px;
+  }
+  
+  h1 { font-size: 28px !important; }
+  h2 { font-size: 22px !important; }
+  h3 { font-size: 18px !important; }
+}
+
+/* Desktop optimizations */
+@media (min-width: 1025px) {
+  body {
+    font-size: 16px;
+  }
+  
+  /* Better hover states on desktop */
+  a:not(.nav-link):not(.user-dropdown-item):not(.btn):hover {
+    text-decoration-color: rgba(255, 47, 47, 0.3);
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY IMPROVEMENTS
+   ======================================== */
+
+/* Better focus states for keyboard navigation */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgb(255, 47, 47);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  body {
+    color: #ffffff;
+    background-color: #000000;
+  }
+  
+  .nav-link {
+    font-weight: 700;
+  }
+  
+  button, .btn {
+    border-width: 2px;
+  }
+}
+
+/* Reduce animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode support (if user has dark mode preference) */
+@media (prefers-color-scheme: dark) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea,
+  select {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+    border-color: rgba(255, 47, 47, 0.3);
+  }
+}
+
+/* Print styles (bonus) */
+@media print {
+  nav, .navbar, .user-dropdown { display: none; }
+  body { background: white; }
+  .profile-card, .register-card { box-shadow: none; border: 1px solid #ccc; }
+}
+
+/* End of responsive.css */

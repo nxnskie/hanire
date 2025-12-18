@@ -1,0 +1,150 @@
+<!-- products.html
+     Purpose: Product shop page with choices between Casual and SuperCar collections
+     Edited: 2025-12-17
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shop - Browse our collection of Casual Cars and Supercars">
+  <link rel="icon" type="image/jpg" href="https://i.pinimg.com/736x/d1/d8/4d/d1d84d0ca2048b739ff48fe76f103376.jpg">
+  <link rel="stylesheet" href="../../public/assets/shopPage_fwp.css">
+  <link rel="stylesheet" href="../../public/assets/shared.css">
+  <link rel="stylesheet" href="../../public/assets/responsive.css">
+  <title>Hanire - Shop</title>
+  <style>
+    .shop-intro {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(30, 30, 30, 0.7));
+      margin: 60px 0;
+      border-top: 3px solid rgb(255, 47, 47);
+      border-bottom: 3px solid rgb(255, 47, 47);
+    }
+    
+    .shop-intro h1 {
+      margin-top: 0;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    
+    .shop-intro p {
+      font-size: 1.1rem;
+      color: #ccc;
+      max-width: 800px;
+      margin: 15px auto 0;
+      line-height: 1.6;
+    }
+
+    .collection-highlight {
+      margin: 80px 0;
+      padding: 50px;
+      background: linear-gradient(135deg, rgba(255, 47, 47, 0.08), rgba(0, 0, 0, 0.4));
+      border-left: 5px solid rgb(255, 47, 47);
+      border-radius: 10px;
+    }
+
+    .collection-highlight h2 {
+      margin: 0 0 20px 0;
+      font-size: 1.5rem;
+      color: rgb(255, 47, 47);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .collection-highlight p {
+      color: #ddd;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .car-gallery {
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Background Layer -->
+  <div class="background"></div>
+
+  <!-- Navigation will be injected by navbar.js -->
+  <nav></nav>
+
+  <!-- =========================
+       SHOP INTRO SECTION
+  ========================== -->
+  <div class="shop-intro">
+    <h1>Collections</h1>
+    <p>Discover our premium vehicle collections tailored to match your lifestyle and performance expectations.</p>
+  </div>
+
+  <!-- =========================
+       CASUAL CARS SECTION
+  ========================== -->
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <div class="collection-highlight">
+      <h2>Casual Cars</h2>
+      <p>
+        Explore our collection of everyday luxury vehicles. These cars offer the perfect balance of style, 
+        comfort, and performance for daily driving. From sleek sedans to elegant coupes, find your perfect match. 
+        Featuring refined comfort, fuel efficiency, and modern technology built for discerning drivers.
+      </p>
+    </div>
+
+    <h1 class="car-brand">CASUAL COLLECTION</h1>
+    <div class="car-gallery">
+      <div class="car-item">
+        <img src="https://i.pinimg.com/736x/ad/df/69/addf6910b21de56c14b90b48bf64c6d4.jpg" 
+             alt="Casual Cars Collection - BMW M4" class="car">
+        <p class="car-name">Premium Casual Vehicles</p>
+        <div class="car-info">
+          Our casual collection represents the pinnacle of everyday luxury. Perfectly engineered for those 
+          who demand both style and substance in their daily drivers.
+        </div> 
+        <button class="view-button" onclick="navigateToPage('casual.html')">EXPLORE COLLECTION</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
+       SUPERCAR SECTION
+  ========================== -->
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <div class="collection-highlight">
+      <h2>Supercars</h2>
+      <p>
+        Experience ultimate performance with our premium supercar collection. These exceptional vehicles 
+        represent the pinnacle of automotive engineering, delivering breathtaking speed, power, and prestige. 
+        Designed exclusively for the true enthusiast seeking excellence without compromise.
+      </p>
+    </div>
+
+    <h1 class="car-brand">SUPERCAR COLLECTION</h1>
+    <div class="car-gallery">
+      <div class="car-item">
+        <img src="https://i.pinimg.com/736x/88/b1/a0/88b1a02eeec4823d02549280b90bd761.jpg" 
+             alt="SuperCar Collection - McLaren Senna" class="car">
+        <p class="car-name">Extreme Performance Machines</p>
+        <div class="car-info">
+          Our supercar selection showcases the most exclusive and powerful machines on the planet. 
+          Limited editions and iconic designs for those who refuse to compromise on performance.
+        </div>
+        <button class="view-button" onclick="navigateToPage('supercar.html')">EXPLORE COLLECTION</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer>
+    <p>&copy; 2025 Hanire. All rights reserved.</p>
+  </footer>
+
+  <script src="../../public/assets/js/navbar.js" defer></script>
+</body>
+</html>

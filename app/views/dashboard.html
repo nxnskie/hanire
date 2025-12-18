@@ -1,0 +1,163 @@
+<!-- index.html
+   Purpose: Dashboard-style home page with welcome message
+   Edited: 2025-12-17
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hanire - Premium Car Dealership Dashboard">
+  <link rel="icon" type="image/jpg" href="https://i.pinimg.com/736x/d1/d8/4d/d1d84d0ca2048b739ff48fe76f103376.jpg">
+    <title>Hanire - Dashboard</title>
+    <link rel="stylesheet" href="../../public/assets/index.css">
+    <link rel="stylesheet" href="../../public/assets/shared.css">
+    <link rel="stylesheet" href="../../public/assets/responsive.css">
+</head>
+<body>
+    <div class="background"></div>
+
+    <!-- Navigation will be injected by navbar.js -->
+    <nav></nav>
+
+    <!-- Dashboard Content -->
+    <main class="dashboard-container">
+      <!-- Welcome Section -->
+      <section class="welcome-section">
+        <div class="welcome-content">
+          <h1 class="welcome-title">Welcome to Hanire</h1>
+          <p class="welcome-subtitle">Premium Car Dealership Experience</p>
+          <p class="welcome-message">
+            Discover our carefully curated collection of luxury vehicles, from elegant everyday cars 
+            to extraordinary supercars. We offer a wide range of premium automotive choices from BMW, 
+            Lamborghini, McLaren, Ferrari, and many more distinguished brands.
+          </p>
+          <div class="welcome-actions">
+            <a href="products.html" class="btn btn-primary">Browse Our Collection</a>
+            <a href="about.html" class="btn btn-secondary">Learn More About Us</a>
+          </div>
+        </div>
+        <div class="welcome-visual">
+          <img src="https://i.pinimg.com/1200x/05/91/40/059140bc06e08bb1a32e6539433a328e.jpg" 
+               alt="Premium Ferrari" class="welcome-image">
+        </div>
+      </section>
+
+      <!-- Quick Access Cards -->
+      <section class="quick-access">
+        <h2>Quick Navigation</h2>
+        <div class="cards-grid">
+          <!-- Casual Cars Card -->
+          <div class="access-card casual-card">
+            <div class="card-icon">🚗</div>
+            <h3>Casual Cars</h3>
+            <p>Explore everyday luxury vehicles with refined comfort and modern technology.</p>
+            <a href="casual.html" class="card-link">View Catalog →</a>
+          </div>
+
+          <!-- Supercars Card -->
+          <div class="access-card supercar-card">
+            <div class="card-icon">⚡</div>
+            <h3>Supercars</h3>
+            <p>Experience ultimate performance and exclusive designs for true enthusiasts.</p>
+            <a href="supercar.html" class="card-link">View Catalog →</a>
+          </div>
+
+          <!-- Sales Card -->
+          <div class="access-card sales-card">
+            <div class="card-icon">📊</div>
+            <h3>Current Sales</h3>
+            <p>Check out our latest promotions and special offers on selected vehicles.</p>
+            <a href="sales.html" class="card-link">View Deals →</a>
+          </div>
+
+          <!-- Contact Card -->
+          <div class="access-card contact-card">
+            <div class="card-icon">📞</div>
+            <h3>Get in Touch</h3>
+            <p>Have questions? Our team is ready to help you find the perfect vehicle.</p>
+            <a href="about.html" class="card-link">Learn More →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Section -->
+      <section class="featured-section">
+        <h2>Featured Highlights</h2>
+        <div class="highlights-grid">
+          <div class="highlight">
+            <img src="https://i.pinimg.com/736x/e3/e7/3f/e3e73fa04add1008a57e7603a10160bf.jpg" 
+                 alt="BMW M4 Competition">
+            <div class="highlight-content">
+              <h3>BMW M4 Competition</h3>
+              <p>Powerful performance meets refined elegance.</p>
+            </div>
+          </div>
+          
+          <div class="highlight">
+            <img src="https://i.pinimg.com/1200x/4e/1b/d9/4e1bd952e5ed6049a9a3045914302750.jpg" 
+                 alt="McLaren Senna">
+            <div class="highlight-content">
+              <h3>McLaren Senna</h3>
+              <p>Ultimate track performance in pure form.</p>
+            </div>
+          </div>
+          
+          <div class="highlight">
+            <img src="https://i.pinimg.com/1200x/05/91/40/059140bc06e08bb1a32e6539433a328e.jpg" 
+                 alt="Ferrari 488 Pista">
+            <div class="highlight-content">
+              <h3>Ferrari 488 Pista</h3>
+              <p>Italian engineering at its finest.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section (Condensed) -->
+      <section class="about-preview">
+        <div class="about-content">
+          <h2>Why Choose Hanire?</h2>
+          <div class="values-grid">
+            <div class="value">
+              <div class="value-letter">H</div>
+              <h4>Hospitality</h4>
+              <p>Exceptional customer service in every interaction</p>
+            </div>
+            <div class="value">
+              <div class="value-letter">A</div>
+              <h4>Assurance</h4>
+              <p>Guaranteed quality and authentic vehicles</p>
+            </div>
+            <div class="value">
+              <div class="value-letter">N</div>
+              <h4>Novelty</h4>
+              <p>Latest models and exclusive collections</p>
+            </div>
+            <div class="value">
+              <div class="value-letter">I</div>
+              <h4>Integrity</h4>
+              <p>Transparent dealings and honest pricing</p>
+            </div>
+            <div class="value">
+              <div class="value-letter">R</div>
+              <h4>Reliability</h4>
+              <p>Trustworthy service before and after purchase</p>
+            </div>
+            <div class="value">
+              <div class="value-letter">E</div>
+              <h4>Excellence</h4>
+              <p>Striving for the highest standards always</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Hanire. All rights reserved.</p>
+    </footer>
+
+    <script src="../../public/assets/js/navbar.js" defer></script>
+</body>
+</html>

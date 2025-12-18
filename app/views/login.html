@@ -1,0 +1,70 @@
+<!-- loginPage_fwp.html
+     Purpose: Login page
+     Edited: 2025-12-17
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Login to Hanire site - secure access for members">
+  <title>Hanire - Login</title>
+  <link rel="stylesheet" href="../../public/assets/loginPage_fwp.css">
+  <link rel="stylesheet" href="../../public/assets/shared.css">
+  <link rel="stylesheet" href="../../public/assets/responsive.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/jpg" href="https://i.pinimg.com/736x/d1/d8/4d/d1d84d0ca2048b739ff48fe76f103376.jpg">
+  <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <div class="login-layout">
+    <div class="carousel" aria-label="Login showcase carousel">
+      <div class="carousel-slides">
+        <div class="carousel-slide"><img src="../../app/models/images/BMW M4 Competition.jpg" alt="BMW M4 Competition" loading="lazy" width="1600" height="900"></div>
+        <div class="carousel-slide"><img src="../../app/models/images/Desktop Wallpaper _ Desktop Background _ Porsche 911 _ Sports Car _ Racing _ Gaming _ Computer Wallpaper _ Digital Download _ 1080p 1440p 4k - Etsy.jpg" alt="Porsche Wallpaper" loading="lazy" width="1600" height="900"></div>
+        <div class="carousel-slide"><img src="../../app/models/images/download (3).jpg" alt="Slide image 3" loading="lazy" width="1600" height="900"></div>
+        <div class="carousel-slide"><img src="../../app/models/images/download (6).jpg" alt="Slide image 4" loading="lazy" width="1600" height="900"></div>
+        <div class="carousel-slide"><img src="../../app/models/images/download (7).jpg" alt="Slide image 5" loading="lazy" width="1600" height="900"></div>
+      </div>
+      <button class="carousel-btn carousel-prev" aria-label="Previous slide">‹</button>
+      <button class="carousel-btn carousel-next" aria-label="Next slide">›</button>
+      <div class="carousel-dots" role="tablist" aria-label="Carousel dots"></div>
+    </div>
+
+    <div class="wrapper">
+      <form>
+        <div class="brand">
+          <div class="brand-logo">H</div>
+          <div class="brand-name">HANIRE</div>
+        </div>
+        <h1>Sign in to your account</h1>
+        <div class="subtitle">Welcome back — enter your credentials to continue.</div>
+
+        <div class="input-box">
+          <label for="email" class="sr-only">Email</label>
+          <i class='bx bx-user' aria-hidden="true"></i>
+          <input id="email" name="email" type="text" placeholder="Email" required aria-label="Email">
+        </div>
+
+        <div class="input-box">
+          <label for="password" class="sr-only">Password</label>
+          <i class='bx bx-lock' aria-hidden="true"></i>
+          <input id="password" name="password" type="password" placeholder="Password" required aria-label="Password">
+        </div>
+
+        <div class="remember-forgot">
+          <label id="checkbox" class="checkbox"><input type="checkbox"> <span></span> Remember Me</label>
+          <a href="#">Forgot Password?</a>
+        </div>
+
+        <button id="submit-btn" class="submit-btn">Sign In</button>
+        <div class="register-link">
+          <p>Don't have an account? <a href="register.html" onclick="navigateToPage('register.html'); return false;">Register</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../../public/assets/js/login.js" defer></script>
+</body>
+</html>

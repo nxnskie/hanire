@@ -1,0 +1,94 @@
+<!-- register.html
+     Purpose: User registration page
+     Edited: 2025-12-11
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Register a new account for Hanire - Standard member registration">
+  <title>Hanire - Register</title>
+  <link rel="stylesheet" href="../../public/assets/register.css">
+  <link rel="stylesheet" href="../../public/assets/shared.css">
+  <link rel="stylesheet" href="../../public/assets/responsive.css">
+  <link rel="icon" type="image/jpg" href="https://i.pinimg.com/736x/d1/d8/4d/d1d84d0ca2048b739ff48fe76f103376.jpg">
+</head>
+<body>
+  <div class="background"></div>
+
+  <!-- Navigation will be injected by navbar.js -->
+  <nav></nav>
+
+  <main class="register-container">
+    <div class="register-card">
+      <div class="register-header">
+        <div class="register-brand-logo">H</div>
+        <h1>Create account</h1>
+        <p class="lead">Join the Hanire community</p>
+      </div>
+
+    <form id="register-form" class="register-form" novalidate>
+      <div class="row">
+        <label for="fullName">Full name</label>
+        <input id="fullName" name="fullName" type="text" required>
+      </div>
+
+      <div class="row two-col">
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+        </div>
+        <div>
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel">
+        </div>
+      </div>
+
+      <div class="row two-col">
+        <div>
+          <label for="location">Location</label>
+          <input id="location" name="location" type="text">
+        </div>
+        <div>
+          <label for="role">Role</label>
+          <div class="role-display">Standard Member</div>
+          <input id="role" name="role" type="hidden" value="Standard Member">
+        </div>
+      </div>
+
+      <div class="row">
+        <label for="avatarInput">Profile Picture</label>
+        <div class="avatar-upload-section">
+          <div id="avatar-preview" class="avatar-preview">No image selected</div>
+          <input id="avatarInput" name="avatarInput" type="file" accept="image/*" style="display: none;">
+          <input id="avatarUrl" name="avatarUrl" type="hidden">
+          <button type="button" class="btn-upload" onclick="document.getElementById('avatarInput').click()">Choose Image</button>
+          <small>Or paste image URL below</small>
+          <input id="avatarUrlInput" name="avatarUrlInput" type="url" placeholder="https://...">
+        </div>
+      </div>
+
+      <div class="row">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" required>
+      </div>
+
+      <div class="row">
+        <label for="confirm">Confirm Password</label>
+        <input id="confirm" name="confirm" type="password" required>
+      </div>
+
+      <div class="row actions">
+        <button type="submit" class="btn primary">Create account</button>
+        
+        <a class="btn link" href="login.html">Back to login</a>
+      </div>
+    </form>
+    </div>
+  </main>
+
+  <script src="../../public/assets/js/navbar.js" defer></script>
+  <script src="../../public/assets/js/register.js" defer></script>
+</body>
+</html>

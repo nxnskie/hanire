@@ -1,0 +1,399 @@
+/* ==================================================
+  salesPage_fwp.css — Promotions & sales landing
+
+  Purpose: Styles for sales landing pages, promotional banners,
+  and product grids used during campaigns.
+
+  Sections:
+  - Navigation/header adjustments for promotional layouts
+  - Hero/banner promotions and CTA
+  - Sale product grid and labels (discount badges)
+  - Responsive stacking and typography for small screens
+
+  Notes:
+  - Visual emphasis uses the accent color `rgb(255,47,47)` for badges and borders.
+  ================================================== */
+
+/* ------------------
+  Navigation
+  ------------------
+  Purpose: site header for the sales page. This block controls the
+  sticky header, backdrop blur, accent border and overall spacing
+  for links and user controls.
+*/
+/* ================= NAVIGATION ================= */
+nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+  padding: 20px 40px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.7));
+  border-bottom: 3px solid rgb(255, 47, 47);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  flex-wrap: wrap;
+}
+
+/* Background gradient overlay */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+nav a {
+  color: rgb(255, 47, 47);
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  letter-spacing: 0.5px;
+}
+
+nav a:hover {
+  color: #ffc9c9;
+  transform: scale(1.05);
+}
+
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Dropdown menu */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(30, 30, 30, 0.9));
+  min-width: 200px;
+  z-index: 1;
+  border-radius: 8px;
+  padding: 8px 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgb(255, 47, 47);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dropdown links */
+.dropdown-content a {
+  color: white;
+  font-size: 16px;
+  padding: 12px 15px;
+  display: block;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: rgb(255, 47, 47);
+  color: white;
+  padding-left: 20px;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Add hover buffer area to prevent dropdown from disappearing */
+.dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 20px;
+}
+
+/* Underline hover effect */
+nav a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #ff4747;
+  transition: width 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ================= USER MENU ================= */
+.user-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  border-left: 2px solid rgba(255, 47, 47, 0.5);
+  padding-left: 30px;
+}
+
+.user-button {
+  background: rgba(255, 47, 47, 0.2);
+  border: 1px solid rgba(255, 47, 47, 0.5);
+  color: rgb(255, 47, 47);
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.user-button:hover {
+  background: rgba(255, 47, 47, 0.4);
+  box-shadow: 0 0 15px rgba(255, 47, 47, 0.3);
+  transform: scale(1.05);
+}
+
+.user-initials {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgb(255,47,47), rgb(220,30,30));
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+  margin-right: 8px;
+}
+
+.user-name {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.user-dropdown-content {
+  display: none;
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(30, 30, 30, 0.9));
+  min-width: 180px;
+  z-index: 1;
+  border-radius: 8px;
+  padding: 8px 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgb(255, 47, 47);
+  animation: slideDown 0.3s ease;
+}
+
+.user-dropdown-content.show {
+  display: block;
+}
+
+.user-dropdown-item {
+  color: white;
+  font-size: 16px;
+  padding: 12px 15px;
+  display: block;
+  text-align: left;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.user-dropdown-item:hover {
+  background-color: rgb(255, 47, 47);
+  color: white;
+  padding-left: 20px;
+}
+
+.user-dropdown-item.logout-item {
+  border-top: 1px solid rgba(255, 47, 47, 0.3);
+  color: rgb(255, 47, 47);
+}
+
+.user-dropdown-item.logout-item:hover {
+  background-color: rgba(255, 47, 47, 0.3);
+}
+
+/* ================= PAGE TITLE ================= */
+body h1 {
+  font-size: 48px;
+  color: white;
+  text-align: left;
+  margin-top: 180px;
+  margin-left: 200px;
+  padding: 10px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  letter-spacing: 2px;
+  animation: fadeInDown 0.8s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= BACKGROUND ================= */
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0,0,0, 0.7)),
+                     url("backgroundImgForFWP.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ================= TABLE ================= */
+table {
+  width: 85%;
+  margin: 60px auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 24px;
+  color: white;
+  background-color: transparent;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+table th,
+table td {
+  border: 2px solid rgba(255, 47, 47, 0.5);
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(16, 16, 16, 0.8);
+  transition: all 0.2s ease;
+}
+
+/* Column headers */
+table th {
+  background: linear-gradient(135deg, rgb(255, 47, 47), rgba(255, 47, 47, 0.7));
+  font-size: 26px;
+  font-weight: bold;
+}
+
+/* Table hover effect */
+table tbody tr:hover {
+  background-color: rgba(255, 47, 47, 0.1);
+}
+
+/* Table links */
+table td a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+table td a:hover {
+  color: #ff5050;
+  text-decoration: underline;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  color: white;
+  font-size: 18px;
+  width: 100%;
+  margin-top: 200px;
+  border-top: 2px solid rgb(255, 47, 47);
+  letter-spacing: 0.5px;
+}
+
+footer p {
+  margin: 0;
+  font-weight: 500;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+footer:hover p {
+  opacity: 1;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 700px) {
+  body h1 {
+    font-size: 28px !important;
+    text-align: center !important;
+    margin-top: 120px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 10px 16px !important;
+    letter-spacing: 1px !important;
+  }
+  
+  footer {
+    padding: 20px 16px !important;
+    margin-top: 60px !important;
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 520px) {
+  body h1 {
+    font-size: 20px !important;
+    margin-top: 80px !important;
+    padding: 8px 12px !important;
+    letter-spacing: 0.5px !important;
+  }
+  
+  footer {
+    padding: 16px 12px !important;
+    margin-top: 40px !important;
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body h1 {
+    font-size: 18px !important;
+    margin-top: 60px !important;
+    padding: 6px 10px !important;
+  }
+}

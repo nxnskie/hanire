@@ -1,0 +1,550 @@
+/* ==================================================
+  loginPage_fwp.css — Modern Login Page Styles
+  Purpose: Beautiful, modern login page with carousel
+  Edited: 2025-12-18
+  ================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background: #000;
+}
+
+/* ================= LOGIN LAYOUT ================= */
+.login-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+background: linear-gradient(135deg, rgba(10, 10, 10, 0.85), rgba(22, 22, 22, 0.75));
+  gap: 0;
+  overflow: hidden;
+}
+
+/* ================= CAROUSEL SECTION ================= */
+.carousel {
+  position: relative;
+  top: 150px;
+  left: 70px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ animation: slideInLeft 0.7s ease-out;
+
+}
+
+.carousel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.4), transparent);
+  z-index: 5;
+}
+
+.carousel-slides {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 47, 47, 0.2);
+  border: 2px solid rgba(255, 47, 47, 0.5);
+  color: rgb(255, 47, 47);
+  font-size: 28px;
+  cursor: pointer;
+  padding: 10px 14px;
+  z-index: 15;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-btn:hover {
+  background: rgba(255, 47, 47, 0.4);
+  border-color: rgb(255, 47, 47);
+  box-shadow: 0 0 20px rgba(255, 47, 47, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-prev {
+  left: 13px;
+}
+
+.carousel-next {
+  right: 80px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.dot:hover {
+  background: rgba(255, 47, 47, 0.6);
+  border-color: rgb(255, 47, 47);
+}
+
+.dot.active {
+  background: rgb(255, 47, 47);
+  border-color: rgb(255, 47, 47);
+  width: 28px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(255, 47, 47, 0.5);
+}
+
+/* ================= FORM WRAPPER ================= */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+background: linear-gradient(135deg, rgb(10, 10, 10), rgb(22, 22, 22));
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 47, 47, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.wrapper form {
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+  z-index: 2;
+  animation: slideInRight 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ================= BRAND SECTION ================= */
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  animation: slideInUp 0.7s ease-out 0.1s both;
+}
+
+.brand-logo {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, rgb(255, 47, 47) 0%, rgb(220, 30, 30) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(255, 47, 47, 0.3);
+  position: relative;
+}
+
+.brand-logo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(255, 47, 47, 0.5), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  animation: glow 2s ease-in-out infinite;
+}
+
+.brand-name {
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ================= FORM HEADING ================= */
+.wrapper h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+  text-align: center;
+  animation: slideInUp 0.7s ease-out 0.2s both;
+}
+
+.subtitle {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 15px;
+  margin-bottom: 35px;
+  animation: slideInUp 0.7s ease-out 0.3s both;
+}
+
+/* ================= INPUT FIELDS ================= */
+.input-box {
+  position: relative;
+  margin-bottom: 22px;
+  animation: slideInUp 0.6s ease-out;
+}
+
+.input-box:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.input-box:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.input-box i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 47, 47, 0.6);
+  font-size: 20px;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.input-box input {
+  width: 90%;
+  padding: 14px 16px 14px 48px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.input-box input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 300;
+}
+
+.input-box input:hover {
+  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(255, 47, 47, 0.3);
+}
+
+.input-box input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgb(255, 47, 47);
+  box-shadow: 0 0 0 3px rgba(255, 47, 47, 0.1), inset 0 0 0 1px rgba(255, 47, 47, 0.2);
+}
+
+.input-box input:focus + i {
+  color: rgb(255, 47, 47);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* ================= CHECKBOX & FORGOT PASSWORD ================= */
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  animation: slideInUp 0.6s ease-out 0.6s both;
+  font-size: 14px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: rgb(255, 47, 47);
+  border-radius: 4px;
+}
+
+.checkbox:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.remember-forgot a {
+  color: rgba(255, 47, 47, 0.8);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.remember-forgot a:hover {
+  color: rgb(255, 47, 47);
+}
+
+/* ================= BUTTONS ================= */
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, rgb(255, 47, 47) 0%, rgb(220, 30, 30) 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 24px rgba(255, 47, 47, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: slideInUp 0.6s ease-out 0.7s both;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(255, 47, 47, 0.4);
+}
+
+.submit-btn:hover::before {
+  left: 100%;
+}
+
+.submit-btn:active {
+  transform: translateY(-1px);
+}
+
+/* ================= REGISTER LINK ================= */
+.register-link {
+  text-align: center;
+  margin-top: 24px;
+  animation: slideInUp 0.6s ease-out 0.8s both;
+}
+
+.register-link p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  margin: 0;
+}
+
+.register-link a {
+  color: rgb(255, 47, 47);
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.register-link a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: rgb(255, 47, 47);
+  transition: width 0.3s ease;
+}
+
+.register-link a:hover {
+  color: #ff8888;
+}
+
+.register-link a:hover::after {
+  width: 100%;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .login-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .carousel {
+    display: none;
+  }
+
+  .wrapper {
+    padding: 40px 24px;
+  }
+
+  .wrapper form {
+    max-width: 100%;
+  }
+
+  .brand {
+    margin-bottom: 32px;
+  }
+
+  .wrapper h1 {
+    font-size: 26px;
+  }
+
+  .input-box input {
+    padding: 12px 14px 12px 42px;
+    font-size: 14px;
+  }
+
+  .carousel-btn {
+    display: none;
+  }
+
+  .carousel-dots {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 32px 16px;
+  }
+
+  .wrapper h1 {
+    font-size: 22px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .brand {
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .brand-logo {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+
+  .brand-name {
+    font-size: 22px;
+    letter-spacing: 2px;
+  }
+
+  .input-box input {
+    padding: 11px 12px 11px 38px;
+    font-size: 13px;
+  }
+
+  .remember-forgot {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 13px;
+  }
+
+  .submit-btn {
+    padding: 12px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .register-link p {
+    font-size: 12px;
+  }
+}

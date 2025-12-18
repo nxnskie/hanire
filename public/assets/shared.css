@@ -1,0 +1,836 @@
+/* ========================================
+  shared.css — Site-wide shared utility styles
+
+  Purpose: Centralized styles used across pages to ensure consistent
+  look-and-feel for navigation, dropdowns, form selects, avatar behavior,
+  and responsive utilities.
+
+  Major sections in this file:
+  1) Global overrides & base helpers
+  2) Navbar + user dropdown
+  3) Form selects and custom selects
+  4) Navigation layout and link styles
+  5) Hamburger / mobile nav interactions
+  6) Tablet breakpoint adjustments
+  7) Mobile breakpoint adjustments
+  8) Utility helpers (hidden, sr-only, aspect-ratio)
+  9) Avatar & initials fallback styling
+  10) Small component tweaks shared across pages
+   
+  Notes:
+  - Keep page-specific visual rules in their page CSS files; use this file for
+    shared components and interaction helpers.
+======================================== */
+
+/* Disable horizontal scrolling on all devices to prevent layout shift */
+html, body {
+  overflow-x: hidden !important;
+}
+
+/* ========================================
+   USER DROPDOWN & NAVBAR COMPONENTS
+   ======================================== */
+
+/* Main container for user profile button and dropdown menu */
+.user-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  border-left: none;
+  padding-left: 30px;
+}
+
+/* User profile button styling - shows initials/avatar and name */
+.user-button {
+  background: rgba(255, 47, 47, 0.2);
+  border: 1px solid rgba(255, 47, 47, 0.5);
+  color: rgb(255, 47, 47);
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Space between avatar and name */
+}
+
+/* Brightens button on hover with glow effect */
+.user-button:hover {
+  background: rgba(255, 47, 47, 0.4);
+  box-shadow: 0 0 15px rgba(255, 47, 47, 0.3);
+}
+
+/* Circular badge showing user initials (fallback when no avatar) */
+.user-initials {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* Alternative initials display (backup) */
+.user-initials-fallback {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* Avatar image styling - maintains perfect circle and prevents distortion */
+.user-avatar-img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover; /* Crops image to fit circle */
+  border: 1px solid rgba(255, 47, 47, 0.5);
+  aspect-ratio: 1 / 1; /* Forces square dimensions */
+  display: block;
+}
+
+/* Prevent all avatar variants from being squashed by flex containers */
+.user-initials, .user-initials-fallback, .user-avatar-img {
+  min-width: 28px;
+  min-height: 28px;
+  line-height: 28px;
+  font-size: 13px;
+  aspect-ratio: 1 / 1;
+  flex: 0 0 auto; /* Don't grow/shrink */
+  overflow: hidden; /* Hide content outside circle */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Extra strong lock for navbar avatars - prevents flex distortion with !important */
+.user-button .user-initials,
+.user-button .user-initials-fallback,
+.user-button .user-avatar-img {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+  line-height: 28px !important;
+  font-size: 13px !important;
+  flex: 0 0 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+/* Final fallback - ensures 1:1 aspect for all avatar displays */
+.user-avatar-img, .user-initials, .user-initials-fallback {
+  aspect-ratio: 1 / 1;
+  flex: 0 0 auto;
+  max-width: none !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Username display next to avatar in dropdown button */
+.user-name {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Dropdown menu container - hidden by default */
+.user-dropdown-content {
+  display: none;
+  position: absolute;
+  top: calc(100% + 12px); /* Appears below button */
+  right: 0; /* Aligns to right edge of button */
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(30, 30, 30, 0.9));
+  min-width: 180px;
+  z-index: 1;
+  border-radius: 8px;
+  padding: 8px 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgb(255, 47, 47);
+  animation: slideDown 0.3s ease;
+}
+
+/* Show dropdown when .show class is added */
+.user-dropdown-content.show {
+  display: block;
+}
+
+/* Individual menu items in dropdown */
+.user-dropdown-item {
+  color: white;
+  font-size: 16px;
+  padding: 12px 15px;
+  display: block;
+  text-align: left;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+/* Highlight menu item on hover */
+.user-dropdown-item:hover {
+  background-color: rgb(255, 47, 47);
+  color: white;
+  padding-left: 20px; /* Slight indent animation */
+}
+
+/* Special styling for logout button */
+.user-dropdown-item.logout-item {
+  border-top: none;
+  color: rgb(255, 47, 47);
+}
+
+/* Logout button hover - slightly different to warn user */
+.user-dropdown-item.logout-item:hover {
+  background-color: rgba(255, 47, 47, 0.3);
+}
+
+/* ========================================
+   SELECT / DROPDOWN FORM ELEMENTS
+   ======================================== */
+
+/* Container for custom select styling */
+.select-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+/* Inline variant - sits next to other elements */
+.select-wrapper.select-inline {
+  display: inline-block;
+  width: auto;
+}
+
+/* Custom select input - dark theme with red accent */
+.role-select {
+  -webkit-appearance: none; /* Remove default browser styling */
+  appearance: none;
+  width: 100%;
+  padding: 10px 40px 10px 12px; /* Extra right padding for dropdown arrow */
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.04);
+  background: linear-gradient(180deg, rgba(12,12,12,0.98), rgba(6,6,6,0.98));
+  color: #666666;
+  -webkit-text-fill-color: #f5f5f5; /* WebKit text color override */
+  color: #f5f5f5;
+  font-size: 14px;
+  cursor: pointer;
+  transition: box-shadow 0.18s ease, border-color 0.18s ease, transform 0.08s ease;
+}
+
+/* Focused select - shows red border and glow */
+.role-select:focus {
+  outline: none;
+  border-color: rgba(255,110,110,0.6);
+  box-shadow: 0 6px 20px rgba(255,80,80,0.06);
+}
+
+/* Custom dropdown arrow icon using SVG */
+.select-wrapper::after {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 14px 14px;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Mobile adjustment for select arrow */
+@media (max-width: 520px) {
+  .role-select { padding: 10px 36px 10px 10px; }
+  .select-wrapper::after { right: 10px; }
+}
+
+/* Option rows within select - ensure visibility */
+.role-select option {
+  background: linear-gradient(180deg, rgba(20,20,20,0.98), rgba(10,10,10,0.98));
+  color: #0f0f0f;
+}
+
+/* Option hover state */
+.role-select option:hover {
+  background: rgba(255,47,47,0.18);
+  color: #fe0000;
+}
+
+/* Selected option - emphasize with red text */
+.role-select option:checked {
+  background: linear-gradient(180deg, rgba(20,20,20,0.98), rgba(10,10,10,0.98));
+  color: rgb(255,47,47);
+  font-weight: 700;
+}
+
+/* Fallback for Edge/IE */
+.role-select::-ms-expand { color: #fff; }
+
+/* ========================================
+   NAVIGATION LAYOUT ADJUSTMENTS
+   ======================================== */
+
+/* Center nav links while keeping user dropdown on right */
+nav { 
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav .nav-links { 
+  margin: 0 auto; /* Centers links */
+  flex: 0 1 auto; 
+  justify-content: center;
+  gap: 5px;
+}
+
+/* Nav link hover effects */
+nav a.nav-link {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding-bottom: 4px;
+}
+
+nav a.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgb(255, 47, 47), transparent);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav a.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Position user dropdown at far right */
+nav .user-dropdown { 
+  position: absolute; 
+  right: 20px; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  margin-left: 0; 
+  padding-left: 0; 
+  border-left: none;
+  transition: all 0.3s ease;
+}
+
+/* ========================================
+   HAMBURGER MENU (MOBILE)
+   ======================================== */
+
+/* Hidden by default - shown on mobile via media query */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 101;
+}
+
+/* Three horizontal lines that make up hamburger */
+.hamburger-menu span {
+  width: 28px;
+  height: 3px;
+  background: rgb(255, 47, 47);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger animation - top line rotates 45 degrees */
+.hamburger-menu.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+/* Hamburger animation - middle line fades out */
+.hamburger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+
+/* Hamburger animation - bottom line rotates -45 degrees */
+.hamburger-menu.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ========================================
+   TABLET RESPONSIVE (701px - 900px)
+   ======================================== */
+
+@media (min-width: 701px) and (max-width: 900px) {
+  /* TABLET: Adjusted padding and layout for medium screens */
+  nav {
+    position: relative !important;
+    padding: 12px 16px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  
+  /* Center navigation links horizontally */
+  nav .nav-links {
+    margin: 0 auto !important;
+    flex: 0 1 auto !important;
+    justify-content: center !important;
+    display: flex !important;
+    flex-direction: row !important; /* Stay horizontal */
+    gap: 10px !important;
+  }
+  
+  /* Reduce text size and padding for tablet */
+  nav .nav-links a {
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+    width: auto !important;
+    text-align: center !important;
+    display: inline-block !important;
+    border-bottom: none !important;
+  }
+  
+  /* Dropdown menu styling on tablet */
+  nav .dropdown {
+    width: auto !important;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+  }
+  
+  nav .dropdown a {
+    width: auto !important;
+    padding: 8px 12px !important;
+  }
+  
+  /* Positioned dropdown appears below parent on hover */
+  nav .dropdown-content {
+    position: absolute !important;
+    display: none !important;
+    width: 120px !important;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 20, 0.9)) !important;
+    top: calc(100% + 8px) !important;
+    left: auto !important;
+    border: 1px solid rgb(255, 47, 47) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    padding: 8px 0 !important;
+    z-index: 100 !important;
+  }
+  
+  /* Show dropdown menu on hover */
+  nav .dropdown:hover .dropdown-content {
+    display: block !important;
+  }
+  
+  /* Dropdown menu items styling */
+  nav .dropdown-content a {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    border: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    display: block !important;
+  }
+  
+  /* User profile dropdown on tablet - positioned at right */
+  nav .user-dropdown {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    margin-left: auto !important;
+    padding-left: 12px !important;
+    border-left: 1px solid rgba(255, 47, 47, 0.3) !important;
+    transform: none !important;
+  }
+  
+  /* Compact button sizing for tablet */
+  .user-button {
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+  }
+  
+  /* Hide username on tablet to save space */
+  .user-name {
+    display: none !important;
+  }
+  
+  /* Hide hamburger menu on tablet (use horizontal nav instead) */
+  .hamburger-menu {
+    display: none !important;
+  }
+}
+
+/* Mobile Navigation - Hamburger menu */
+@media (max-width: 700px) {
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+  .user-name { font-size: 12px !important; display: none !important; /* Hide name on tiny phones */ }
+  /* Keep avatar/initials visually identical to desktop on small screens */
+  .user-initials, .user-initials-fallback, .user-avatar-img {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+    line-height: 28px !important;
+    font-size: 13px !important;
+    aspect-ratio: 1 / 1 !important;
+    object-fit: cover !important;
+    flex: 0 0 auto !important;
+    max-width: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    border-radius: 50% !important;
+  }
+  
+  /* Show hamburger menu on phones only */
+  .hamburger-menu { display: flex !important; }
+  
+  /* Mobile nav layout - flex row with hamburger on left */
+  nav { 
+    position: static !important; 
+    padding: 12px 16px !important; 
+    display: flex !important; 
+    justify-content: space-between !important; 
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+  }
+  
+  /* Sliding nav drawer - hidden by default */
+  nav .nav-links { 
+    position: fixed !important; 
+    top: 60px !important; 
+    left: 0 !important; 
+    width: 100% !important; 
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.98), rgba(20, 20, 20, 0.95)) !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    padding: 16px 0 !important;
+    border-bottom: 2px solid rgb(255, 47, 47) !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    transition: max-height 0.3s ease !important;
+    margin: 0 !important;
+    z-index: 100 !important;
+    margin: 0 auto !important;
+    justify-content: flex-start !important;
+    flex: unset !important;
+  }
+  
+  nav .nav-links.active { 
+    max-height: 500px !important; 
+  }
+  
+  nav .nav-links a {
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    width: 100% !important;
+    text-align: left !important;
+    display: block !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Dropdown container alignment */
+  nav .dropdown {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  nav .dropdown a {
+    width: 100% !important;
+    padding: 12px 16px !important;
+  }
+  
+  nav .nav-links a:last-child {
+    border-bottom: none !important;
+  }
+  
+  /* Dropdown styling on mobile */
+  nav .dropdown-content {
+    position: static !important;
+    display: none !important;
+    width: 100% !important;
+    min-width: unset !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    top: auto !important;
+    left: auto !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin-top: 0 !important;
+    padding: 8px 0 !important;
+  }
+  
+  nav .dropdown:hover .dropdown-content,
+  nav .dropdown.active .dropdown-content {
+    display: block !important;
+  }
+  
+  nav .dropdown-content a {
+    padding: 10px 32px !important;
+    font-size: 12px !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    border: none !important;
+    margin: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+  }
+  
+  /* User dropdown on mobile */
+  nav .user-dropdown { 
+    position: relative !important; 
+    transform: none !important; 
+    right: auto !important;
+    top: auto !important;
+    margin-left: auto !important; 
+    padding-left: 8px !important; 
+    border-left: none !important;
+    z-index: 1000 !important;
+  }
+  
+  .user-dropdown-content {
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    right: 0 !important;
+  }
+  
+  .user-button { 
+    padding: 8px 10px !important; 
+    font-size: 12px !important; 
+  }
+  .user-name { 
+    display: none !important; 
+  }
+}
+
+  nav a { font-size: 14px !important; padding: 6px 10px !important; 
+}
+
+
+@media (max-width: 520px) {
+  nav { padding: 8px 10px !important; }
+  nav a { font-size: 12px !important; padding: 5px 8px !important; }
+  .user-button { padding: 6px 10px !important; font-size: 12px !important; }
+  .user-name { font-size: 12px !important; display: none !important; /* Hide name on tiny phones */ }
+  .user-initials, .user-initials-fallback, .user-avatar-img {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    line-height: 24px !important;
+    font-size: 12px !important;
+    aspect-ratio: 1 / 1 !important;
+    object-fit: cover !important;
+    flex: 0 0 auto !important;
+    max-width: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    border-radius: 50% !important;
+  }
+}
+
+/* ========================================
+   ENHANCED ANIMATIONS & TRANSITIONS
+   ======================================== */
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 47, 47, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(255, 47, 47, 0);
+  }
+}
+
+/* ========================================
+   ENHANCED BUTTON STYLES
+   ======================================== */
+
+button, .btn, input[type="submit"], input[type="button"] {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Poppins', sans-serif;
+}
+
+button:hover:not(:disabled), .btn:hover {
+  transform: translateY(-2px);
+}
+
+button:active:not(:disabled), .btn:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   ENHANCED LINK STYLES
+   ======================================== */
+
+a {
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+a:not(.nav-link):not(.user-dropdown-item):not(.btn) {
+  color: rgb(255, 47, 47);
+  text-decoration: none;
+}
+
+a:not(.nav-link):not(.user-dropdown-item):not(.btn):hover {
+  color: #ff8888;
+  text-decoration: underline;
+}
+
+/* ========================================
+   FORM INPUT ENHANCEMENTS
+   ======================================== */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Poppins', sans-serif;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   SCROLLBAR STYLING
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 47, 47);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff6666;
+}
+
+/* ========================================
+   TEXT SELECTION STYLING
+   ======================================== */
+
+::selection {
+  background-color: rgb(255, 47, 47);
+  color: white;
+}
+
+::-moz-selection {
+  background-color: rgb(255, 47, 47);
+  color: white;
+}
+
+/* ========================================
+   UTILITY ENHANCEMENTS
+   ======================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Smooth transitions for all state changes */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

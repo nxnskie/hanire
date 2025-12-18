@@ -1,0 +1,642 @@
+/* ==================================================
+   profilePage_fwp.css — Profile page styles & layout
+
+   Purpose: styles specific to the profile view, including header/avatar,
+   profile cards, statistics blocks, and responsive adjustments.
+
+   Sections in this file:
+   - Navigation (page header)
+   - Profile header (avatar, name, role)
+   - Details & info cards (email, phone, location)
+   - Stats blocks (vehicles, spending, rating)
+   - Forms / edit buttons (if present)
+   - Responsive rules
+
+   Notes:
+   - Visual consistency: uses project accent color `rgb(255,47,47)`.
+   - Keep heavy layout rules here; small global helpers live in `responsive.css`.
+   ================================================== */
+
+/* ================= NAVIGATION ================= */
+nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+  padding: 20px 40px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 20, 0.7));
+  border-bottom: 3px solid rgb(255, 47, 47);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  flex-wrap: wrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+nav a {
+  color: rgb(255, 47, 47);
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  letter-spacing: 0.5px;
+}
+
+nav a:hover {
+  color: rgba(255,47,47,0.18);
+  transform: scale(1.05);
+}
+
+/* Dropdown container */
+.dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Dropdown menu */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(30, 30, 30, 0.9));
+  min-width: 200px;
+  z-index: 1;
+  border-radius: 8px;
+  padding: 8px 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgb(255, 47, 47);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dropdown links */
+.dropdown-content a {
+  color: white;
+  font-size: 16px;
+  padding: 12px 15px;
+  display: block;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: rgb(255, 47, 47);
+  color: white;
+  padding-left: 20px;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Add hover buffer area to prevent dropdown from disappearing */
+
+  /* ------------------
+    Profile header & avatar
+    ------------------
+    Purpose: styles that control the profile header (avatar circle, name, role)
+    and the immediate header layout. Keep avatar sizing consistent with
+    other pages to avoid layout jumps when switching pages.
+  */
+.dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 20px;
+}
+
+/* Underline hover effect */
+nav a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: rgb(255,47,47);
+  transition: width 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ================= USER MENU ================= */
+.user-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+  border-left: 2px solid rgba(255, 47, 47, 0.5);
+  padding-left: 30px;
+}
+
+.user-button {
+  background: rgba(255, 47, 47, 0.2);
+  border: 1px solid rgba(255, 47, 47, 0.5);
+  color: rgb(255, 47, 47);
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.user-button:hover {
+  background: rgba(255, 47, 47, 0.4);
+  box-shadow: 0 0 15px rgba(255, 47, 47, 0.3);
+  transform: scale(1.05);
+}
+
+.user-initials {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgb(255,47,47), rgb(220,30,30));
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+  margin-right: 8px;
+}
+
+.user-name {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.user-dropdown-content {
+  display: none;
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(30, 30, 30, 0.9));
+  min-width: 180px;
+  z-index: 1;
+  border-radius: 8px;
+  padding: 8px 0;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgb(255, 47, 47);
+  animation: slideDown 0.3s ease;
+}
+
+.user-dropdown-content.show {
+  display: block;
+}
+
+.user-dropdown-item {
+  color: white;
+  font-size: 16px;
+  padding: 12px 15px;
+  display: block;
+  text-align: left;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.user-dropdown-item:hover {
+  background-color: rgb(255, 47, 47);
+  color: white;
+  padding-left: 20px;
+}
+
+.user-dropdown-item.logout-item {
+  border-top: none;
+  color: rgb(255, 47, 47);
+}
+
+.user-dropdown-item.logout-item:hover {
+  background-color: rgba(255, 47, 47, 0.3);
+}
+
+/* ================= BODY ================= */
+body {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeIn 0.8s ease-out;
+  color: white;
+}
+
+/* ================= PROFILE CONTAINER ================= */
+.profile-container {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 40px 20px;
+}
+
+.profile-container h1 {
+  font-size: 60px;
+  text-align: center;
+  padding: 20px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  letter-spacing: 2px;
+  animation: fadeInDown 0.8s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= PROFILE WRAPPER ================= */
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  background-color: transparent; /* ensure wrapper is transparent on iOS */
+}
+
+/* ================= PROFILE CARD ================= */
+.profile-card {
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.9), rgba(20, 20, 20, 0.85));
+  background-color: rgba(10, 10, 10, 0.95); /* solid fallback for iOS Safari */
+  -webkit-backdrop-filter: blur(6px); /* WebKit prefix for iOS */
+  backdrop-filter: blur(6px);
+  -webkit-transform: translateZ(0); /* trigger GPU compositing to improve rendering on iOS */
+  transform: translateZ(0);
+  border: 2px solid rgba(255, 47, 47, 0.3);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+  animation: slideUp 0.8s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.profile-card:hover {
+  border-color: rgba(255, 47, 47, 0.6);
+  box-shadow: 0 12px 40px rgba(255, 47, 47, 0.2);
+  transition: all 0.3s ease;
+}
+
+/* iOS / Mobile Safari fixes: avoid white gaps caused by background-attachment: fixed
+   and ensure transparent wrappers render dark correctly. Uses feature-detect
+   for WebKit touch devices. */
+@supports (-webkit-overflow-scrolling: touch) {
+  body {
+    background-attachment: scroll; /* prevent white rendering artifact on iOS */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+  }
+
+  .background {
+    background-attachment: scroll;
+  }
+
+    .profile-wrapper {
+      background-color: transparent !important;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    .profile-card,
+    .edit-profile-card {
+      background-color: rgba(10,10,10,0.95) !important;
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+}
+
+/* ================= PROFILE HEADER ================= */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-bottom: 2px solid rgba(255, 47, 47, 0.3);
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid rgb(255, 47, 47);
+  object-fit: cover;
+  margin-bottom: 20px;
+  box-shadow: 0 0 30px rgba(255, 47, 47, 0.4);
+  transition: all 0.3s ease;
+  aspect-ratio: 1 / 1;
+  display: block;
+}
+
+.profile-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(255, 47, 47, 0.6);
+}
+
+.profile-header h2 {
+  font-size: 36px;
+  margin: 15px 0;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.user-role {
+  font-size: 18px;
+  color: rgb(255, 47, 47);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* ================= PROFILE SECTIONS ================= */
+.profile-section {
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 47, 47, 0.2);
+}
+
+.profile-section:last-of-type {
+  border-bottom: none;
+}
+
+.profile-section h3 {
+  font-size: 24px;
+  color: rgb(255, 47, 47);
+  margin-bottom: 20px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* ================= INFO GRID ================= */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.info-item {
+  background: rgba(255, 47, 47, 0.1);
+  border: 1px solid rgba(255, 47, 47, 0.3);
+  border-radius: 10px;
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+
+.info-item:hover {
+  background: rgba(255, 47, 47, 0.2);
+  border-color: rgba(255, 47, 47, 0.5);
+  box-shadow: 0 5px 15px rgba(255, 47, 47, 0.1);
+}
+
+.info-item label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(255, 47, 47);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.info-item p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+/* ================= PURCHASE LIST ================= */
+.purchase-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.purchase-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 20px;
+  align-items: center;
+  background: rgba(255, 47, 47, 0.05);
+  border-left: 4px solid rgb(255, 47, 47);
+  padding: 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.purchase-item:hover {
+  background: rgba(255, 47, 47, 0.15);
+  transform: translateX(5px);
+}
+
+.purchase-item .vehicle {
+  font-weight: 600;
+  color: white;
+}
+
+.purchase-item .date,
+.purchase-item .price {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: right;
+}
+
+.purchase-item .price {
+  color: rgb(255, 47, 47);
+  font-weight: 600;
+}
+
+/* ================= STATS GRID ================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 47, 47, 0.2), rgba(255, 47, 47, 0.05));
+  border: 2px solid rgba(255, 47, 47, 0.4);
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+  background: linear-gradient(135deg, rgba(255, 47, 47, 0.3), rgba(255, 47, 47, 0.15));
+  border-color: rgba(255, 47, 47, 0.7);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(255, 47, 47, 0.2);
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: bold;
+  color: rgb(255, 47, 47);
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ================= ACTION BUTTONS ================= */
+.profile-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 47, 47, 0.3);
+}
+
+.edit-btn,
+.settings-btn {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.edit-btn {
+  background: rgba(255, 47, 47, 0.2);
+  color: rgb(255, 47, 47);
+  border: none;
+  text-decoration: none;
+  text-align: center;
+}
+
+.edit-btn:hover {
+  background: rgba(255, 47, 47, 0.4);
+  box-shadow: 0 0 20px rgba(255, 47, 47, 0.3);
+  transform: scale(1.02);
+}
+
+.settings-btn {
+  background: rgb(255, 47, 47);
+  color: white;
+}
+
+.settings-btn:hover {
+  background: rgba(255, 47, 47, 0.8);
+  box-shadow: 0 0 25px rgba(255, 47, 47, 0.5);
+  transform: scale(1.02);
+}
+
+/* ================= FOOTER ================= */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 100px;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  width: 100%;
+  border-top: 2px solid rgb(255, 47, 47);
+  letter-spacing: 0.5px;
+}
+
+footer p {
+  margin: 0;
+  font-weight: 500;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+footer:hover p {
+  opacity: 1;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 700px) {
+  nav { padding: 10px 12px !important; gap: 10px !important; }
+  nav a { font-size: 14px !important; padding: 6px 10px !important; }
+  .nav-links { gap: 8px !important; }
+  .profile-header { flex-direction: column !important; align-items: center !important; }
+  .profile-avatar { width: 100px !important; height: 100px !important; font-size: 32px !important; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  footer { padding: 20px 16px !important; font-size: 14px !important; margin-top: 60px !important; }
+}
+
+@media (max-width: 520px) {
+  nav { padding: 8px 10px !important; }
+  nav a { font-size: 12px !important; padding: 5px 8px !important; }
+  .profile-header { text-align: center !important; }
+  .profile-avatar { width: 80px !important; height: 80px !important; font-size: 28px !important; }
+  .profile-header h2 { font-size: 18px !important; }
+  .stats-grid { grid-template-columns: 1fr !important; }
+  .stat-box { padding: 12px !important; }
+  .profile-section { padding: 16px !important; }
+  .btn { width: 100% !important; padding: 12px !important; font-size: 13px !important; }
+  footer { padding: 16px 12px !important; font-size: 12px !important; }
+}
+
+@media (max-width: 420px) {
+  nav { padding: 6px 8px !important; }
+  nav a { font-size: 11px !important; padding: 4px 6px !important; }
+  .profile-avatar { width: 70px !important; height: 70px !important; font-size: 24px !important; }
+  .profile-header h2 { font-size: 16px !important; }
+  .profile-header h3 { font-size: 12px !important; }
+  .stat-box h3 { font-size: 12px !important; }
+  .stat-box p { font-size: 11px !important; }
+  .profile-section { padding: 12px !important; }
+  .btn { padding: 10px !important; font-size: 12px !important; }
+  footer { padding: 12px 8px !important; font-size: 11px !important; }
+}

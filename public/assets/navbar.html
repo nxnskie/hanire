@@ -1,0 +1,33 @@
+<nav>
+  <div class="hamburger-menu" id="hamburger-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="nav-links" id="nav-links">
+    <a href="javascript:void(0)" class="nav-link" data-target="index.html" onclick="window.navigateToPage('index.html'); return false;">Home</a>
+    <a href="javascript:void(0)" class="nav-link" data-target="about.html" onclick="window.navigateToPage('about.html'); return false;">About</a>
+    <a href="javascript:void(0)" class="nav-link" data-target="sales.html" onclick="window.navigateToPage('sales.html'); return false;">Sales</a>
+    
+    <div class="dropdown" id="cars-dropdown">
+      <a href="javascript:void(0)" class="nav-link" data-target="products.html" onclick="window.navigateToPage('products.html'); return false;">Shop ▼</a>
+      <div class="dropdown-content">
+        <a href="javascript:void(0)" data-target="casual.html" onclick="window.navigateToPage('casual.html'); return false;">Casual Cars</a>
+        <a href="javascript:void(0)" data-target="supercar.html" onclick="window.navigateToPage('supercar.html'); return false;">Supercars</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="user-dropdown" id="user-dropdown">
+    <button class="user-button" id="user-btn">
+      <span id="username-display">Login</span>
+    </button>
+    <div class="user-dropdown-content" id="user-menu">
+      <a href="javascript:void(0)" class="user-dropdown-item" id="profile-link" style="display:none;" data-target="profile.html" onclick="window.navigateToPage('profile.html'); return false;">My Profile</a>
+      <a href="javascript:void(0)" class="user-dropdown-item" id="settings-link" style="display:none;" data-target="settings.html" onclick="window.navigateToPage('settings.html'); return false;">Settings</a>
+      <a href="#" class="user-dropdown-item logout-item" id="logout-btn" style="display:none;">Logout</a>
+      <a href="javascript:void(0)" class="user-dropdown-item" id="login-link" data-target="login.html" onclick="window.navigateToPage('login.html'); return false;">Login / Register</a>
+    </div>
+  </div>
+</nav>
